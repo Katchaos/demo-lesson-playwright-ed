@@ -16,8 +16,6 @@ export class OrderPage {
   readonly userPhoneEmptyFieldError: Locator
 
 
-  // add more locators here
-
   constructor(page: Page) {
     this.page = page
     this.statusButton = page.getByTestId('openStatusPopup-button')
@@ -34,6 +32,5 @@ export class OrderPage {
       hasText: 'The field must be filled in.'})
     this.userPhoneEmptyFieldError = this.userPhoneEmptyFieldError = page.locator('[data-name="phone-input-error"]', {
       hasText: 'The field must be filled in.'})
-    // add more locators here
   }
 }
