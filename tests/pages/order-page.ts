@@ -30,12 +30,10 @@ export class OrderPage {
     this.logOutButton = page.getByTestId('logout-button')
     this.userNameLengthError = page.getByText('The field must contain at least of characters: 2')
     this.userPhoneLengthError = page.getByText('The field must contain at least of characters: 6')
-    // this.userNameEmptyFieldError = page.getByText('The field must be filled in.')
     this.userNameEmptyFieldError = this.userNameEmptyFieldError = page.locator('[data-name="username-input-error"]', {
       hasText: 'The field must be filled in.'})
     this.userPhoneEmptyFieldError = this.userPhoneEmptyFieldError = page.locator('[data-name="phone-input-error"]', {
       hasText: 'The field must be filled in.'})
-    // this.userPhoneEmptyFieldError = page.getByText('The field must be filled in.')
     // add more locators here
   }
 }
