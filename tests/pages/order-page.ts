@@ -1,7 +1,8 @@
 import type { Locator, Page } from '@playwright/test'
+import { BasePage } from './base-page'
 
-export class OrderPage {
-  readonly page: Page
+export class OrderPage extends BasePage {
+  // readonly page: Page
   readonly statusButton: Locator
   readonly userNameField: Locator
   readonly orderButton: Locator
@@ -14,12 +15,13 @@ export class OrderPage {
   readonly userPhoneLengthError: Locator
   readonly userNameEmptyFieldError: Locator
   readonly userPhoneEmptyFieldError: Locator
+  readonly searchOrderInput: Locator
+  readonly searchOrderSubmitButton: Locator
 
-
-  // add more locators here
 
   constructor(page: Page) {
-    this.page = page
+    super(page)
+    // this.page = page
     this.statusButton = page.getByTestId('openStatusPopup-button')
     this.userNameField = page.getByTestId('username-input')
     this.orderButton = page.getByTestId('createOrder-button')
@@ -30,10 +32,19 @@ export class OrderPage {
     this.logOutButton = page.getByTestId('logout-button')
     this.userNameLengthError = page.getByText('The field must contain at least of characters: 2')
     this.userPhoneLengthError = page.getByText('The field must contain at least of characters: 6')
-    this.userNameEmptyFieldError = this.userNameEmptyFieldError = page.locator('[data-name="username-input-error"]', {
-      hasText: 'The field must be filled in.'})
-    this.userPhoneEmptyFieldError = this.userPhoneEmptyFieldError = page.locator('[data-name="phone-input-error"]', {
-      hasText: 'The field must be filled in.'})
-    // add more locators here
+    this.userNameEmptyFieldError = this.userNameEmptyFieldError = page.locator(
+      '[data-name="username-input-error"]',
+      {
+        hasText: 'The field must be filled in.',
+      },
+    )
+    this.userPhoneEmptyFieldError = this.userPhoneEmptyFieldError = page.locator(
+      '[data-name="phone-input-error"]',
+      {
+        hasText: 'The field must be filled in.',
+      },
+    )
+    this.searchOrderInput = page.getByTestId('searchOrder-input')
+    this.searchOrderSubmitButton = page.getByTestId('searchOrder-submitButton')
   }
 }
